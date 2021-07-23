@@ -12,5 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Test scripts repo
-        run: shellcheck source=scripts/**/*.sh
+        run: |
+          spellcheck --version
+          shellcheck source=scripts/**/*.sh
         
