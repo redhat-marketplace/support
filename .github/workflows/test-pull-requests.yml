@@ -13,6 +13,7 @@ jobs:
 
       - name: Test scripts repo
         run: |
+          apt-get install shellcheck
           spellcheck --version
           shellcheck source=scripts/**/*.sh
         
