@@ -13,7 +13,9 @@ jobs:
 
       - name: Test scripts repo
         run: |
-          apt-get install shellcheck
-          spellcheck --version
+          scversion="stable"
+          wget -qO- "https://github.com/koalaman/shellcheck/releases/download/${scversion?}/shellcheck-${scversion?}.linux.x86_64.tar.xz" | tar -xJv
+          cp "shellcheck-${scversion}/shellcheck" /usr/bin/
+          shellcheck --version
           shellcheck source=scripts/**/*.sh
         
