@@ -2,6 +2,6 @@
 Red Hat Marketplace support
 
 
-## Instruction
-Please run shellcheck before create a pull request
+## Instructions
+Please run shellcheck before creating a pull request
 https://github.com/koalaman/shellcheck
