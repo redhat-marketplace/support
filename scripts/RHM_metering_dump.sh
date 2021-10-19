@@ -118,7 +118,7 @@ oc get meterreports -A
 displayheading 'Status of MeterDefinitions'
 oc get meterdefinitions -A
 
-for POD in `oc get pods -n openshift-redhat-marketplace --output json | jq '.items[] | .metadata.name' | sed 's/"//g'`
+for POD in (oc get pods -n openshift-redhat-marketplace --output json | jq '.items[] | .metadata.name' | sed 's/"//g')
 do
   if [[ "${POD}" == "rhm-metric-state"* ]]; then
     displayheading "Describing pod ${POD}"
