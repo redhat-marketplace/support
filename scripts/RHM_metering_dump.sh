@@ -68,25 +68,16 @@ oc cluster-info > /dev/null 2>&1 || errorExit "Connection to cluster failed!"
 function checkOCCliVersion() {
   result=$(oc version -o json 2>&1)
   RETVAL=$?
-  if [ $RETVAL -gt 0 ];then
-    if [[ "$result" == *"You must be logged in to the server (Unauthorized)"* ]]; then
-      echoRed "You must be logged in to the server (Unauthorized)"
-    else
-      echoRed "Error checking oc cli version. Check if oc cli version is 4.5 or higher."
-    fi
-    exit 1
+  if [ $RETVAL -gt 0 ]; then
+    echoRed "Error checking oc cli installation. $result"
+    exit $RETVAL
   fi
 }
-
 
 function checkOCServerVersion() {
   currentServerVersion="$(oc version -o json | jq .openshiftVersion)"
   if ! [[ $currentServerVersion =~ $requiredVersion ]]; then
-    if [ "$currentServerVersion" = null ]; then
-      echoRed "Unsupported OpenShift version below 4.5 detected. Supported OpenShift versions are 4.5 and higher."
-    else
-      echoRed "Unsupported OpenShift version $currentServerVersion detected. Supported OpenShift versions are 4.5 and higher."
-    fi
+    echoRed "Unsupported OpenShift version $currentServerVersion detected. Supported OpenShift versions are 4.5 and higher."
     exit 1
   fi
 }
