@@ -23,7 +23,6 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;36m'
 NC='\033[0m'
 requiredVersion="^.*4\.([0-9]{2,}|[5-9]?)?(\.[0-9]+.*)*$"
-VERSION='1.0'
 NAMESPACE=openshift-redhat-marketplace
 
 
