@@ -5,7 +5,7 @@
 ##Description:
 ##    This script collects OC objects, logs and other metadata from the objects corresponding to Red Hat Marketplace Operator.
 ##    This helps troubleshooting issues with Red Hat Marketplace operators usage and metering.
-##.   NOTE: secrets data are NOT collected
+##   NOTE: secrets data are NOT collected
 
 ## Pre-requisites:
 ##	1. Valid login session to your Openshift cluster
