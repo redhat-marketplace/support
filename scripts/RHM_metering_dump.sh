@@ -122,24 +122,24 @@ for POD in $(oc get pods -n $NAMESPACE --output json | jq '.items[] | .metadata.
 do
   if [[ "${POD}" == "rhm-metric-state"* ]]; then
     displayheading "Describing pod ${POD}"
-    oc describe pod ${POD} -n ${NAMESPACE}
+    oc describe pod "${POD}" -n ${NAMESPACE}
     displayheading "Logs from the pod ${POD}"
-    oc logs ${POD} -n ${NAMESPACE} --all-containers --tail=500
+    oc logs "${POD}" -n ${NAMESPACE} --all-containers --tail=500
   elif [[ "${POD}" == "rhm-remoteresources3-controller"* ]]; then
     displayheading "Describing pod ${POD}"
-    oc describe pod ${POD} -n ${NAMESPACE}
+    oc describe pod "${POD}" -n ${NAMESPACE}
     displayheading "Logs from the pod ${POD}"
-    oc logs ${POD} -n ${NAMESPACE} --all-containers --tail=500
+    oc logs "${POD}" -n ${NAMESPACE} --all-containers --tail=500
   elif [[ "${POD}" == "meter-report-$(date '+%Y-%m-%d')"* ]]; then
     displayheading "Describing pod ${POD}"
-    oc describe pod ${POD} -n ${NAMESPACE}
+    oc describe pod "${POD}" -n ${NAMESPACE}
     displayheading "Logs from the pod ${POD}"
-    oc logs ${POD} -n ${NAMESPACE} --all-containers --tail=500
+    oc logs "${POD}" -n ${NAMESPACE} --all-containers --tail=500
   elif [[ "${POD}" == "meter-report-$(date +%Y-%m-%d -d "yesterday")"* ]]; then
     displayheading "Describing pod ${POD}"
-    oc describe pod ${POD} -n ${NAMESPACE}
+    oc describe pod "${POD}" -n ${NAMESPACE}
     displayheading "Logs from the pod ${POD}"
-    oc logs ${POD} -n ${NAMESPACE} --all-containers --tail=500
+    oc logs "${POD}" -n ${NAMESPACE} --all-containers --tail=500
   fi;
 done
 
