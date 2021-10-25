@@ -10,7 +10,7 @@ A collection of scripts that enables you to gather diagnostic information from y
 #### Pre-requisites:
 1. Valid login session to your OpenShift cluster
 2. oc CLI in your PATH
-3. Assign execute permissions to the script
+3. Assign execute permissions to the script (`chmod +x ~/rhm_operator_dump.sh` or `chmod +x ~/rhm_metering_dump.sh`)
 
 #### Usage examples:
 ./rhm_operator_dump.sh > operator_dump.txt
