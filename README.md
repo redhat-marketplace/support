@@ -17,8 +17,8 @@ A collection of scripts that enable you to gather diagnostic information from yo
 The following commands will save the scripts in your current working directory.
 
 ```bash
-  curl -L https://github.com/redhat-marketplace/support/blob/main/scripts/rhm_operator_dump.sh --output rhm_operator_dump.sh
-  curl -L https://github.com/redhat-marketplace/support/blob/main/scripts/rhm_metering_dump.sh --output rhm_metering_dump.sh
+  curl -L https://raw.githubusercontent.com/redhat-marketplace/support/blob/main/scripts/rhm_operator_dump.sh --output rhm_operator_dump.sh
+  curl -L https://raw.githubusercontent.com/redhat-marketplace/support/blob/main/scripts/rhm_metering_dump.sh --output rhm_metering_dump.sh
 ```
 
 #### Make scripts executable
