@@ -103,42 +103,42 @@ testconnection
 checkOCCliVersion
 checkOCServerVersion
 
-displayheading "Getting openshift server and client version"
+displayHeading "Getting openshift server and client version"
 oc version
 
-displayheading "Verifying if ${NAMESPACE} namespace already exists"
+displayHeading "Verifying if ${NAMESPACE} namespace already exists"
 checkrhmoperator
 
-displayheading "Status of all pods in ${NAMESPACE}"
+displayHeading "Status of all pods in ${NAMESPACE}"
 oc get pods -n openshift-redhat-marketplace 
 
-displayheading 'Status of MeterReports'
+displayHeading 'Status of MeterReports'
 oc get meterreports -A
 
-displayheading 'Status of MeterDefinitions'
+displayHeading 'Status of MeterDefinitions'
 oc get meterdefinitions -A
 
 for POD in $(oc get pods -n $NAMESPACE --output json | jq '.items[] | .metadata.name' | sed 's/"//g')
 do
   if [[ "${POD}" == "rhm-metric-state"* ]]; then
-    displayheading "Describing pod ${POD}"
+    displayHeading "Describing pod ${POD}"
     oc describe pod "${POD}" -n ${NAMESPACE}
-    displayheading "Logs from the pod ${POD}"
+    displayHeading "Logs from the pod ${POD}"
     oc logs "${POD}" -n ${NAMESPACE} --all-containers --tail=500
   elif [[ "${POD}" == "rhm-remoteresources3-controller"* ]]; then
-    displayheading "Describing pod ${POD}"
+    displayHeading "Describing pod ${POD}"
     oc describe pod "${POD}" -n ${NAMESPACE}
-    displayheading "Logs from the pod ${POD}"
+    displayHeading "Logs from the pod ${POD}"
     oc logs "${POD}" -n ${NAMESPACE} --all-containers --tail=500
   elif [[ "${POD}" == "meter-report-$(date '+%Y-%m-%d')"* ]]; then
-    displayheading "Describing pod ${POD}"
+    displayHeading "Describing pod ${POD}"
     oc describe pod "${POD}" -n ${NAMESPACE}
-    displayheading "Logs from the pod ${POD}"
+    displayHeading "Logs from the pod ${POD}"
     oc logs "${POD}" -n ${NAMESPACE} --all-containers --tail=500
   elif [[ "${POD}" == "meter-report-$(date +%Y-%m-%d -d "yesterday")"* ]]; then
-    displayheading "Describing pod ${POD}"
+    displayHeading "Describing pod ${POD}"
     oc describe pod "${POD}" -n ${NAMESPACE}
-    displayheading "Logs from the pod ${POD}"
+    displayHeading "Logs from the pod ${POD}"
     oc logs "${POD}" -n ${NAMESPACE} --all-containers --tail=500
   fi;
 done
