@@ -140,3 +140,17 @@ oc describe remoteresources3 parent  -n $NAMESPACE
 displayHeading "Describing Remoteresources3 child"
 oc describe remoteresources3 child  -n $NAMESPACE
 
+displayHeading "Getting MarketplaceConfig in namespace $NAMESPACE"
+oc get marketplaceconfig -n $NAMESPACE -o=yaml
+
+displayHeading "Getting Services in namespace $NAMESPACE"
+oc get service -n $NAMESPACE
+
+displayHeading "Getting Routes in namespace $NAMESPACE"
+oc get route -n $NAMESPACE
+
+displayHeading "Getting datactl configuration"
+FILE=$HOME/.datactl/config
+if [ -f "$FILE" ]; then
+    sed -e '/^  pull-secret-data:/ d' -e '/^  token-data:/ d' $FILE
+fi
