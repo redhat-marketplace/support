@@ -88,9 +88,6 @@ testConnection
 displayHeading 'Checking jq version'
 jq --version 2> /dev/null || errorExit "[ERROR] Pre-requisite cli 'jq' is not installed\n"
 
-displayHeading 'Checking yq version'
-yq --version 2> /dev/null || errorExit "[ERROR] Pre-requisite cli 'yq' is not installed\n"
-
 checkOCCliVersion
 checkOCServerVersion
 
@@ -155,5 +152,5 @@ oc get route -n $NAMESPACE
 displayHeading "Getting datactl configuration"
 FILE=$HOME/.datactl/config
 if [ -f "$FILE" ]; then
-    yq eval 'del(.upload-api.pull-secret-data)' $FILE
+    sed -e '/^  pull-secret-data:/ d' -e '/^  token-data:/ d' $FILE
 fi
